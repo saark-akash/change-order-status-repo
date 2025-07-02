@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <preference for="Vendor\CustomOrderProcessing\Api\Data\StatusLogsInterface" type="Vendor\CustomOrderProcessing\Model\StatusLogs"/>
+  <preference for="Vendor\CustomOrderProcessing\Api\StatusLogsRepositoryInterface" type="Vendor\CustomOrderProcessing\Model\StatusLogsRepository"/>
+  <preference for="Vendor\CustomOrderProcessing\Api\OrderStatusChangeInterface" type="Vendor\CustomOrderProcessing\Model\Service\OrderChangeStatusService"/>
+  <preference for="Vendor\CustomOrderProcessing\Api\StatusLogsInterface" type="Vendor\CustomOrderProcessing\Model\StatusLogs"/>
+  <preference for="Vendor\CustomOrderProcessing\Api\StatusLogsInterface" type="Vendor\CustomOrderProcessing\Model\StatusLogs"/>
+</config>

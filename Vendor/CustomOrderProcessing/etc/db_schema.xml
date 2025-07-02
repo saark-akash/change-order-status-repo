@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright 2017 Adobe
+ * All Rights Reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="change_status_logs" resource="sales" engine="innodb" comment="Change status logs">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="int" name="order_id" unsigned="true" nullable="false" identity="false"
+                comment="Order ID"/>
+        <column xsi:type="varchar" name="old_status" nullable="true" length="32" comment="Old Status"/>
+        <column xsi:type="varchar" name="new_status" nullable="true" length="32" comment="New Status"/>
+        <column xsi:type="timestamp" name="created_at" on_update="true" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Change Status At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="SALES_CHANGE_STATUS_OF_ORDER">
+            <column name="order_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SALES_ORDER_CHANGE_STATUS_UPDATE"
+                    table="change_status_logs" column="order_id" referenceTable="sales_order"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>
