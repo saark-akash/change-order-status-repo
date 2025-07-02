@@ -37,7 +37,7 @@ Class OrderChangeStatusService implements OrderStatusChangeInterface
             $params = $this->request->getBodyParams();
             $order = $this->orderRepository->get($id);
             $oldStatus = $order->getStatus();
-            $order->setStatus($params["status"])->save();
+            $order->setState($params["status"], true)->setStatus($params["status"])->save();
             $this->eventManager->dispatch(
                 'sales_order_status_change_after',
                 ['order' => $order, 'old_status' => $oldStatus]
